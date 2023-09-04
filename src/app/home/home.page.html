@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Input Data Visitor
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+
+  <br>
+  <form (ngSubmit)="create()" enctype="multipart/form-data" novalidate #form="ngForm">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="formData.visitorName" name="visitorName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Company</ion-label>
+      <ion-input type="text" [(ngModel)]="formData.companyName"  name="companyName" required></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked">Photos</ion-label>
+      <ion-input type="file" (change)="onVisitorPhotosFileChanged($event)" accept="Gambar/*"  name="visitorPhotos" required></ion-input>
+    </ion-item>
+
+    
+      <ion-input type="hidden" displayFormat="YYYY-MMM-DD" pickerFormat="YYYY-MMM-DD" value="{{ currentDate }}" [(ngModel)]="formData.visitDate" name="visitDate" ></ion-input>
+
+    <ion-item>
+      <ion-label position="stacked">Purpose</ion-label>
+      <ion-input type="text" [(ngModel)]="formData.visitPurpose" name="visitPurpose" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Whos Visited</ion-label>
+      <ion-select [(ngModel)]="formData.whosVisited" name="whosVisited" (ionChange)="onNamaChange()">
+        <ion-select-option value="">Select Whos Visited</ion-select-option>
+        <ion-select-option *ngFor="let option of whosVisitedOptions" [value]="option.name">
+          {{ option.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="stacked">Devisi</ion-label>
+      <ion-input [(ngModel)]="formData.Devisi" name="Devisi" type="text" readonly></ion-input>
+    </ion-item>
+
+      <ion-input type="hidden" [(ngModel)]="formData.clockIn" displayFormat="HH:mm" pickerFormat="HH:mm" name="clockIn" value="{{ clockInTime }}"></ion-input>
+
+      <ion-input type="hidden" value="{{clockOutTime}}" [(ngModel)]="formData.clockOut" name="clockOut"> </ion-input>
+      
+      <ion-input type="hidden" [(ngModel)]="formData.Bulan" name="Bulan"> </ion-input>
+      <ion-input type="hidden" [(ngModel)]="formData.Tahun" name="Tahun"> </ion-input>
+
+      <ion-input type="hidden" [(ngModel)]="formData.aktif" name="aktif"></ion-input>
+
+      <ion-button expand="block" type="submit">Simpan</ion-button>
+  </form>
+</ion-content>

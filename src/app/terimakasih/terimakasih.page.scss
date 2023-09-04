@@ -1,0 +1,24 @@
+ion-content{
+    .Thanks{
+        border: 1px solid #979797;
+        border-radius: 5px;
+        margin-left: 30px;
+        margin-right: 30px;
+        display: block;
+        justify-content: center;
+        align-items: center; 
+        margin-top: 60vw;
+
+     img{
+        margin-top: 30px;
+        margin-left:30vw;
+     }   
+     label{
+        display: flex;
+        margin-top: 30px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px; 
+     }
+    }
+}
